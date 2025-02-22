@@ -22,7 +22,7 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
     public String buscarPlaneta(String nombre) throws RemoteException {
         String resultado = "";
         for (Planeta planeta : planetas) {
-            if (planeta.getNombre().contains(nombre)) {
+            if (planeta.getNombre().toUpperCase().contains(nombre)) {
                 resultado += planeta + "\n";
             }
         }
@@ -33,7 +33,7 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
     public String buscarPorColores(String color) throws RemoteException {
         String resultado = "";
         for (Planeta planeta : planetas) {
-            if (planeta.getColor().contains(color)) {
+            if (planeta.getColor().toUpperCase().contains(color)) {
                 resultado += planeta.getNombre() + ", ";
             }
         }
@@ -44,7 +44,7 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
     public String buscarPorTamaño(String tamaño) throws RemoteException {
         String resultado = "";
         for (Planeta planeta : planetas) {
-            if (planeta.getTamaño().contains(tamaño)) {
+            if (planeta.getTamaño().toUpperCase().contains(tamaño)) {
                 resultado += planeta.getNombre() + ", ";
             }
         }
@@ -56,10 +56,10 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
         Double gravedad1 = 0.0;
         Double gravedad2 = 0.0;
         for (Planeta planeta : planetas) {
-            if (planeta.getNombre().contains(nombre1)) {
+            if (planeta.getNombre().toUpperCase().contains(nombre1)) {
                 gravedad1 = planeta.getGravedad();
             }
-            if (planeta.getNombre().contains(nombre1)) {
+            if (planeta.getNombre().toUpperCase().contains(nombre2)) {
                 gravedad2 = planeta.getGravedad();
             }
         }
@@ -71,24 +71,24 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
         int posicion1 = 0;
         int posicion2 = 0;
         for (Planeta planeta : planetas) {
-            if (planeta.getNombre().contains(nombre1)) {
+            if (planeta.getNombre().toUpperCase().contains(nombre1)) {
                 posicion1 = planeta.getPosicion();
             }
-            if (planeta.getNombre().contains(nombre1)) {
+            if (planeta.getNombre().toUpperCase().contains(nombre2)) {
                 posicion2 = planeta.getPosicion();
             }
         }
-        return "El planeta que más cerca esta del Sol es: " + ((posicion1 > posicion2) ? (nombre1 + "\n") : (nombre2 + "\n"));
+        return "El planeta que más cerca esta del Sol es: " + (posicion1 < posicion2 ? (nombre1 + "\n") : (nombre2 + "\n"));
     }
 
     @Override
     public String devolverSatelite(String nombre) throws RemoteException {
         String satelitePrincipal = "";
         for (Planeta planeta : planetas) {
-            if (planeta.getNombre().contains(nombre)) {
+            if (planeta.getNombre().toUpperCase().contains(nombre)) {
                 satelitePrincipal += planeta.getSatelite() + "\n";
             }
         }
-        return "El satélite del planeta " + nombre + "es: " + satelitePrincipal;
+        return "El satélite del planeta " + nombre + " es: " + satelitePrincipal;
     }
 }

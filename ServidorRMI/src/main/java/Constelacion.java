@@ -1,7 +1,7 @@
 public class Constelacion {
     private String nombre;
     private String observaciones;
-    private Constelacion() {}
+    public Constelacion() {}
 
     public Constelacion(String nombre, String observaciones) {
         this.nombre = nombre;

@@ -8,11 +8,11 @@ public class ClienteConstelacionesRMI {
         Registry registry;
         Scanner lector = new Scanner(System.in);
         try {
-            registry = LocateRegistry.getRegistry("192.168.1.138", 5055);
+            registry = LocateRegistry.getRegistry("172.21.208.1", 5055);
             System.out.println("Hemos obtenido el registro");
 
             ConstelacionInterfaceRMI constelaciones = (ConstelacionInterfaceRMI) registry.lookup("misConstelaciones");
-            PlanetaInferfaceRMI planetas = (PlanetaInferfaceRMI) registry.lookup("misPlanetas");
+            PlanetaInterfaceRMI planetas = (PlanetaInterfaceRMI) registry.lookup("misPlanetas");
             System.out.println("Hemos obtenidos los objetos remotos");
             System.out.println();
             String buscado;
@@ -47,14 +47,14 @@ public class ClienteConstelacionesRMI {
                                 bplaneta=lector.nextLine().toUpperCase();
                                 System.out.println(planetas.buscarPorTamaño(bplaneta));
                                 break;
-                            case "Comparador":
+                            case "COMP":
                                 System.out.println("Dime 2 planetas y te dire cual tiene más gravedad, dime el primero");
                                 bplaneta=lector.nextLine().toUpperCase();
                                 System.out.println("Y el segundo planeta");
                                 bplaneta2=lector.nextLine().toUpperCase();
                                 System.out.println(planetas.compararGravedad(bplaneta,bplaneta2));
                                 break;
-                            case "Cercania":
+                            case "CER":
                                 System.out.println("Dime 2 planetas y te dire cual esta más cerca del sol, dime el primero");
                                 bplaneta=lector.nextLine().toUpperCase();
                                 System.out.println("Y el segundo planeta");
@@ -62,18 +62,25 @@ public class ClienteConstelacionesRMI {
                                 System.out.println(planetas.planetaMasCercanoAlSol(bplaneta,bplaneta2));
                                 break;
                             case "S":
-                                System.out.println("Dime el planeta y te dire su satelite(si lo++ tiene)");
+                                System.out.println("Dime el planeta y te dire su satelite(si lo tiene)");
                                 bplaneta=lector.nextLine().toUpperCase();
                                 System.out.println(planetas.devolverSatelite(bplaneta));
+                                break;
+                            case "FIN":
+
                                 break;
                             default:
                                 System.out.println("Opción incorrecta");
                         }
                         break;
+                    case "FIN":
+
+                        break;
                     default:
                         System.out.println("Opción incorrecta");
                 }
             } while (!opcion.equals("FIN"));
+            System.out.println("Gracias por venir");
         } catch (RemoteException | NotBoundException e) {
             System.out.println(e.getMessage());
         }
@@ -95,8 +102,8 @@ public class ClienteConstelacionesRMI {
         System.out.println("N = Nombre");
         System.out.println("C = Color");
         System.out.println("T = Tamaño");
-        System.out.println("Comparador = Comparador gravedad");
-        System.out.println("Cercania = Cual esta más cerca del sol");
+        System.out.println("Comp = Comparador gravedad");
+        System.out.println("Cer = Cual esta más cerca del sol");
         System.out.println("S = Satelite principal");
         System.out.println("--------------------------");
         System.out.println("¿Qué opción eliges?");

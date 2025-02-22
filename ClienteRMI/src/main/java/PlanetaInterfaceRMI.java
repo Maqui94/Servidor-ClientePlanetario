@@ -1,6 +1,7 @@
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface PlanetaInferfaceRMI {
+public interface PlanetaInterfaceRMI extends Remote {
     public String buscarPlaneta(String nombre) throws RemoteException;
     public String buscarPorColores(String color) throws RemoteException;
     public String buscarPorTamaño(String tamaño) throws RemoteException;
