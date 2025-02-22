@@ -27,6 +27,9 @@ public class ConstelacionesRMI extends UnicastRemoteObject implements Constelaci
                 observaciones += constelacion.getObservaciones() + "\n";
             }
         }
+        if (observaciones.isEmpty()) {
+            return "No existe esa constelacion";
+        }
         return "La constelacion " + nombre + " " +  observaciones;
     }
 }

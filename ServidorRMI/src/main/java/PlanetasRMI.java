@@ -26,6 +26,9 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
                 resultado += planeta + "\n";
             }
         }
+        if (resultado.isEmpty()) {
+            return "No hay planetas con ese nombre";
+        }
         return "Info del planeta: " + resultado;
     }
 
@@ -37,6 +40,9 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
                 resultado += planeta.getNombre() + ", ";
             }
         }
+        if (resultado.isEmpty()) {
+            return "No hay planetas con ese color";
+        }
         return "Los planetas de color " + color + " son: " +  resultado + "\n";
     }
 
@@ -47,6 +53,9 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
             if (planeta.getTamaño().toUpperCase().contains(tamaño)) {
                 resultado += planeta.getNombre() + ", ";
             }
+        }
+        if (resultado.isEmpty()) {
+            return "No hay planetas con ese tamaño";
         }
         return "Los planetas de tamaño " + tamaño + " son: " +  resultado + "\n";
     }
@@ -63,6 +72,9 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
                 gravedad2 = planeta.getGravedad();
             }
         }
+        if (gravedad1.equals(0.0) || gravedad2.equals(0.0)) {
+            return "Uno de los planetas no existe";
+        }
         return "El planeta con más gravedad es: " + ((gravedad1 > gravedad2) ? (nombre1 + "\n") : (nombre2 + "\n"));
     }
 
@@ -78,6 +90,8 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
                 posicion2 = planeta.getPosicion();
             }
         }
+        if (posicion1 == 0 || posicion2 == 0)
+            return "Uno de los dos planetas no existe";
         return "El planeta que más cerca esta del Sol es: " + (posicion1 < posicion2 ? (nombre1 + "\n") : (nombre2 + "\n"));
     }
 
@@ -89,6 +103,8 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
                 satelitePrincipal += planeta.getSatelite() + "\n";
             }
         }
+        if (satelitePrincipal.isEmpty())
+            return "Ese planeta no existe o no tiene satelite";
         return "El satélite del planeta " + nombre + " es: " + satelitePrincipal;
     }
 }

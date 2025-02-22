@@ -8,7 +8,7 @@ public class ClienteConstelacionesRMI {
         Registry registry;
         Scanner lector = new Scanner(System.in);
         try {
-            registry = LocateRegistry.getRegistry("172.21.208.1", 5055);
+            registry = LocateRegistry.getRegistry("192.168.1.138", 5055);
             System.out.println("Hemos obtenido el registro");
 
             ConstelacionInterfaceRMI constelaciones = (ConstelacionInterfaceRMI) registry.lookup("misConstelaciones");
@@ -67,14 +67,12 @@ public class ClienteConstelacionesRMI {
                                 System.out.println(planetas.devolverSatelite(bplaneta));
                                 break;
                             case "FIN":
-
                                 break;
                             default:
                                 System.out.println("Opción incorrecta");
                         }
                         break;
                     case "FIN":
-
                         break;
                     default:
                         System.out.println("Opción incorrecta");
@@ -92,6 +90,7 @@ public class ClienteConstelacionesRMI {
         System.out.println("--------------------------");
         System.out.println("C para Constelaciones");
         System.out.println("P de Planetas");
+        System.out.println("FIN para salir");
         System.out.println("--------------------------");
         System.out.println("¿Qué opción eliges?");
     }
@@ -105,6 +104,7 @@ public class ClienteConstelacionesRMI {
         System.out.println("Comp = Comparador gravedad");
         System.out.println("Cer = Cual esta más cerca del sol");
         System.out.println("S = Satelite principal");
+        System.out.println("FIN para volver atrás");
         System.out.println("--------------------------");
         System.out.println("¿Qué opción eliges?");
     }
