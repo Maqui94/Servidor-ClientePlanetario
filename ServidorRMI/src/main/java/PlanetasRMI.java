@@ -7,6 +7,7 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
     private ArrayList<Planeta> planetas;
 
     public PlanetasRMI() throws RemoteException {
+        planetas = new ArrayList<Planeta>();
         planetas.add(new Planeta("Mercurio", "Gris", "Pequeño", 3.7, "Ninguno", 1));
         planetas.add(new Planeta("Venus", "Amarillo", "Mediano", 8.87 , "Ninguno", 2));
         planetas.add(new Planeta("Tierra", "Azul", "Mediano", 9.81, "Luna", 3));

@@ -9,6 +9,7 @@ public class ServidorRMI {
         int puerto = 5055;
         try {
             host = InetAddress.getLocalHost().getHostAddress();
+            System.out.println("Se ha podido obtener la dirección IP");
         } catch (UnknownHostException e) {
             System.out.println("No se ha podido obtener la dirección IP");
             System.out.println(e.getMessage());
@@ -19,8 +20,8 @@ public class ServidorRMI {
 
             ConstelacionesRMI constelaciones = new ConstelacionesRMI();
             PlanetasRMI planetas = new PlanetasRMI();
-            registro.rebind("miConstelaciones", constelaciones);
-            registro.rebind("miPlanetas", planetas);
+            registro.rebind("misConstelaciones", constelaciones);
+            registro.rebind("misPlanetas", planetas);
             System.out.println("Servicio registrado en host " + host + " y puerto " + puerto);
         } catch (RemoteException e) {
             System.out.println("No se ha podido registrar el servicio");

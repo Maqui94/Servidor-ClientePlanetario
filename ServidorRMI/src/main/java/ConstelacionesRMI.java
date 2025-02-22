@@ -6,6 +6,7 @@ public class ConstelacionesRMI extends UnicastRemoteObject implements Constelaci
     private ArrayList<Constelacion> constelaciones;
 
     public ConstelacionesRMI() throws RemoteException {
+        constelaciones = new ArrayList<Constelacion>();
         constelaciones.add(new Constelacion("Osa Mayor", "Se desplaza en círculos alrededor del polo norte."));
         constelaciones.add(new Constelacion("Osa Menor", "Su estrella más conocida es la polar que se encuentra en la prolongación del eje de la tierra."));
         constelaciones.add(new Constelacion("Tauro", "Una de las constelaciones más conocidas desde tiempos remotos."));

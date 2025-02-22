@@ -8,11 +8,11 @@ public class ClienteConstelacionesRMI {
         Registry registry;
         Scanner lector = new Scanner(System.in);
         try {
-            registry = LocateRegistry.getRegistry("localhost", 5055);
+            registry = LocateRegistry.getRegistry("192.168.1.138", 5055);
             System.out.println("Hemos obtenido el registro");
 
-            ConstelacionInterfaceRMI constelaciones = (ConstelacionInterfaceRMI) registry.lookup("miConstelaciones");
-            PlanetaInferfaceRMI planetas = (PlanetaInferfaceRMI) registry.lookup("miPlanetas");
+            ConstelacionInterfaceRMI constelaciones = (ConstelacionInterfaceRMI) registry.lookup("misConstelaciones");
+            PlanetaInferfaceRMI planetas = (PlanetaInferfaceRMI) registry.lookup("misPlanetas");
             System.out.println("Hemos obtenidos los objetos remotos");
             System.out.println();
             String buscado;
@@ -70,13 +70,10 @@ public class ClienteConstelacionesRMI {
                                 System.out.println("Opción incorrecta");
                         }
                         break;
-                    case "FIN":
-                        System.out.println("Programa finalizado");
-                        break;
                     default:
                         System.out.println("Opción incorrecta");
                 }
-            } while (!opcion.equals("F"));
+            } while (!opcion.equals("FIN"));
         } catch (RemoteException | NotBoundException e) {
             System.out.println(e.getMessage());
         }
