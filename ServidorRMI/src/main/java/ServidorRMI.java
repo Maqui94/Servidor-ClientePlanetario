@@ -8,7 +8,6 @@ public class ServidorRMI {
         String host;
         int puerto = 5055;
         try {
-
             host = InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
             System.out.println("No se ha podido obtener la dirección IP");
@@ -16,7 +15,6 @@ public class ServidorRMI {
             return;
         }
         try {
-
             Registry registro = LocateRegistry.createRegistry(puerto);
 
             ConstelacionesRMI constelaciones = new ConstelacionesRMI();

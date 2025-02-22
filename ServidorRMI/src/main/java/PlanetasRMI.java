@@ -16,25 +16,78 @@ public class PlanetasRMI extends UnicastRemoteObject implements PlanetaInterface
         planetas.add(new Planeta("Urano", "Azul Verdoso", "Gigante", 8.69, "Titania", 7));
         planetas.add(new Planeta("Neptuno", "Azul", "Gigante", 11.15, "Tritón", 8));
     }
+
     @Override
     public String buscarPlaneta(String nombre) throws RemoteException {
         String resultado = "";
-        for (Planeta c : planetas) {
-            if (c.getNombre().contains(nombre)) {
-                resultado = resultado + c + "\n";
+        for (Planeta planeta : planetas) {
+            if (planeta.getNombre().contains(nombre)) {
+                resultado += planeta + "\n";
             }
         }
-        return "El planeta "+ nombre+ " "+  resultado;
+        return "Info del planeta: " + resultado;
     }
 
     @Override
     public String buscarPorColores(String color) throws RemoteException {
-        return "";
+        String resultado = "";
+        for (Planeta planeta : planetas) {
+            if (planeta.getColor().contains(color)) {
+                resultado += planeta.getNombre() + ", ";
+            }
+        }
+        return "Los planetas de color " + color + " son: " +  resultado + "\n";
     }
-    //Formatear par que quede bonito
-    //Buscar por colores, y me da solo los nombres.
-    //Buscar por tamaño, me da los nombres.
-    //Comparar Gravedades entre un planeta y o tro.
-    //Cual esta mas cerca del sol.
-    //Cual es el satelite principal del planeta X
+
+    @Override
+    public String buscarPorTamaño(String tamaño) throws RemoteException {
+        String resultado = "";
+        for (Planeta planeta : planetas) {
+            if (planeta.getTamaño().contains(tamaño)) {
+                resultado += planeta.getNombre() + ", ";
+            }
+        }
+        return "Los planetas de tamaño " + tamaño + " son: " +  resultado + "\n";
+    }
+
+    @Override
+    public String compararGravedad(String nombre1, String nombre2) throws RemoteException {
+        Double gravedad1 = 0.0;
+        Double gravedad2 = 0.0;
+        for (Planeta planeta : planetas) {
+            if (planeta.getNombre().contains(nombre1)) {
+                gravedad1 = planeta.getGravedad();
+            }
+            if (planeta.getNombre().contains(nombre1)) {
+                gravedad2 = planeta.getGravedad();
+            }
+        }
+        return "El planeta con más gravedad es: " + ((gravedad1 > gravedad2) ? (nombre1 + "\n") : (nombre2 + "\n"));
+    }
+
+    @Override
+    public String planetaMasCercanoAlSol(String nombre1, String nombre2) throws RemoteException {
+        int posicion1 = 0;
+        int posicion2 = 0;
+        for (Planeta planeta : planetas) {
+            if (planeta.getNombre().contains(nombre1)) {
+                posicion1 = planeta.getPosicion();
+            }
+            if (planeta.getNombre().contains(nombre1)) {
+                posicion2 = planeta.getPosicion();
+            }
+        }
+        return "El planeta que más cerca esta del Sol es: " + ((posicion1 > posicion2) ? (nombre1 + "\n") : (nombre2 + "\n"));
+    }
+
+    @Override
+    public String devolverSatelite(String nombre) throws RemoteException {
+        String satelitePrincipal = "";
+        for (Planeta planeta : planetas) {
+            if (planeta.getNombre().contains(nombre)) {
+                satelitePrincipal += planeta.getSatelite() + "\n";
+            }
+        }
+        return "El satélite del planeta " + nombre + "es: " + satelitePrincipal;
+    }
 }
