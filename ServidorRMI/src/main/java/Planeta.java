@@ -6,8 +6,7 @@ public class Planeta {
     private String satelite;
     private int posicion;
 
-    public Planeta() {
-    }
+    private Planeta() {}
 
     public Planeta(String nombre, String color, String tamaño, double gravedad, String satelite, int posicion) {
         this.nombre = nombre;
