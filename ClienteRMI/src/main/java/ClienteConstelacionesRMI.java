@@ -17,32 +17,49 @@ public class ClienteConstelacionesRMI {
             System.out.println();
             String buscado;
             String opcion;
+            String bplaneta;
             do {
-                escribirMenu();
+                escribirMenu1();
                 opcion = lector.nextLine().toUpperCase();
                 switch (opcion) {
-                    case "T":
-                        System.out.println("Escribe nombre de la constelación: ");
-                        buscado = lector.nextLine();
+                    case "C":
+                        escribirMenuC();
+                        buscado = lector.nextLine().toUpperCase();
                         System.out.println(constelaciones.buscarConstelacion(buscado));
                         break;
-                    case "B":
-                        System.out.println("Escribe nombre banda: ");
-                        buscado = lector.nextLine();
-                        System.out.println(canciones.buscarBanda(buscado));
-                        break;
-                    case "A":
-                        System.out.println("Escribe nombre álbum: ");
-                        buscado = lector.nextLine();
-                        System.out.println(canciones.buscarAlbum(buscado));
-                        break;
                     case "P":
-                        System.out.println("Escribe año de producción: ");
-                        buscado = lector.nextLine();
-                        int a = Integer.parseInt(buscado);
-                        System.out.println(canciones.buscarProducido(a));
+                        escribirMenuP();
+                        buscado = lector.nextLine().toUpperCase();
+                        switch (buscado){
+                            case "N":
+                                System.out.println("Dime el nombre del planeta y te dare toda la información");
+                                bplaneta=lector.nextLine().toUpperCase();
+                                System.out.println();
+                                break;
+                            case "C":
+                                System.out.println("Dime el color y te dire que planetas hay de ese color");
+                                bplaneta=lector.nextLine().toUpperCase();
+                                System.out.println();
+                                break;
+                            case "T":
+                                System.out.println("Dime que tamaño, pequeño, mediano o gigante");
+                                bplaneta=lector.nextLine().toUpperCase();
+                                System.out.println();
+                                break;
+                            case "Comparador":
+                                break;
+                            case "Cercania":
+                                break;
+                            case "S":
+                                System.out.println("Dime el planeta y te dire su satelite(si lo++ tiene)");
+                                bplaneta=lector.nextLine().toUpperCase();
+                                System.out.println();
+                                break;
+                            default:
+                                System.out.println("Opción incorrecta");
+                        }
                         break;
-                    case "F":
+                    case "FIN":
                         System.out.println("Programa finalizado");
                         break;
                     default:
@@ -56,29 +73,30 @@ public class ClienteConstelacionesRMI {
     }
     private static void escribirMenu1() {
         System.out.println();
-        System.out.println("Búsqueda de canciones");
+        System.out.println("Bienvenido al Planetario, sobre que necesita información");
         System.out.println("--------------------------");
-        System.out.println("T = Título");
-        System.out.println("B = Banda");
-        System.out.println("A = Álbum");
-        System.out.println("P = Año producción");
-        System.out.println("F = Terminar programa");
+        System.out.println("C para Constelaciones");
+        System.out.println("P de Planetas");
         System.out.println("--------------------------");
         System.out.println("¿Qué opción eliges?");
     }
-    private static void escribirMenu2() {
+    private static void escribirMenuP() {
         System.out.println();
-        System.out.println("Búsqueda de canciones");
+        System.out.println("Búsqueda sobre planetas");
         System.out.println("--------------------------");
-        System.out.println("T = Título");
-        System.out.println("B = Banda");
-        System.out.println("A = Álbum");
-        System.out.println("P = Año producción");
-        System.out.println("F = Terminar programa");
+        System.out.println("N = Nombre");
+        System.out.println("C = Color");
+        System.out.println("T = Tamaño");
+        System.out.println("Comparador = Comparador gravedad");
+        System.out.println("Cercania = Cual esta más cerca del sol");
+        System.out.println("S = Satelite principal");
         System.out.println("--------------------------");
         System.out.println("¿Qué opción eliges?");
+    }
+    private static void escribirMenuC() {
+        System.out.println();
+        System.out.println("Búsqueda de Constelaciones");
+        System.out.println("Escribe el nombre de la constelación que necesitas información");
     }
 }
-//Bienvenida al Planetario
-//Formatear 1 menu para elegir Planetas o constelaciones
-//La busqueda que deseas reaalizar para cada uno
+
