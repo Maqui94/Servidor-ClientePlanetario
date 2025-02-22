@@ -18,6 +18,7 @@ public class ClienteConstelacionesRMI {
             String buscado;
             String opcion;
             String bplaneta;
+            String bplaneta2;
             do {
                 escribirMenu1();
                 opcion = lector.nextLine().toUpperCase();
@@ -34,26 +35,36 @@ public class ClienteConstelacionesRMI {
                             case "N":
                                 System.out.println("Dime el nombre del planeta y te dare toda la información");
                                 bplaneta=lector.nextLine().toUpperCase();
-                                System.out.println();
+                                System.out.println(planetas.buscarPlaneta(bplaneta));
                                 break;
                             case "C":
                                 System.out.println("Dime el color y te dire que planetas hay de ese color");
                                 bplaneta=lector.nextLine().toUpperCase();
-                                System.out.println();
+                                System.out.println(planetas.buscarPorColores(bplaneta));
                                 break;
                             case "T":
                                 System.out.println("Dime que tamaño, pequeño, mediano o gigante");
                                 bplaneta=lector.nextLine().toUpperCase();
-                                System.out.println();
+                                System.out.println(planetas.buscarPorTamaño(bplaneta));
                                 break;
                             case "Comparador":
+                                System.out.println("Dime 2 planetas y te dire cual tiene más gravedad, dime el primero");
+                                bplaneta=lector.nextLine().toUpperCase();
+                                System.out.println("Y el segundo planeta");
+                                bplaneta2=lector.nextLine().toUpperCase();
+                                System.out.println(planetas.compararGravedad(bplaneta,bplaneta2));
                                 break;
                             case "Cercania":
+                                System.out.println("Dime 2 planetas y te dire cual esta más cerca del sol, dime el primero");
+                                bplaneta=lector.nextLine().toUpperCase();
+                                System.out.println("Y el segundo planeta");
+                                bplaneta2=lector.nextLine().toUpperCase();
+                                System.out.println(planetas.planetaMasCercanoAlSol(bplaneta,bplaneta2));
                                 break;
                             case "S":
                                 System.out.println("Dime el planeta y te dire su satelite(si lo++ tiene)");
                                 bplaneta=lector.nextLine().toUpperCase();
-                                System.out.println();
+                                System.out.println(planetas.devolverSatelite(bplaneta));
                                 break;
                             default:
                                 System.out.println("Opción incorrecta");
